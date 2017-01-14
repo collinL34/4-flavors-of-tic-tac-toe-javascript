@@ -1,0 +1,30 @@
+body {
+  text-align: center;
+}
+.square{
+    width:  100px;
+    height: 100px;
+}
+
+.v{
+    border-left:  1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.h{
+    border-top:    1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#board {
+  background-image: url('marble.jpeg');
+  border: solid;
+  margin-left: 560px;
+  width:  300px;
+}
+
+tr {
+  text-align: center;
+  font-size: 80px;
+  border-color: yellow;
+}
