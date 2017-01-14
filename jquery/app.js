@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $(function() { $('.square').off('click') });
+    // $(function() { $('.square').off('click') });
 
     $('.replay').hide();
     var plays = [];
