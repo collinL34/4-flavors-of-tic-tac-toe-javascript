@@ -12,6 +12,7 @@ $(document).ready(function() {
     });
 
     $('.square').on('click', function(event) {
+        // $(this).css('border-color', 'red');
         var square = event.target;
         if (plays[plays.length - 1] !== 'X' || plays[plays.length - 1] === undefined) {
             square.append('X');

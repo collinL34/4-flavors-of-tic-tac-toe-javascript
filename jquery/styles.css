@@ -2,8 +2,8 @@ body {
   text-align: center;
 }
 .square{
-    width:  100px;
-    height: 100px;
+    width:  400px;
+    height: 180px;
 }
 
 .v{
@@ -19,8 +19,10 @@ body {
 #board {
   background-image: url('marble.jpeg');
   border: solid;
-  margin-left: 570px;
-  width:  300px;
+  /*border-color: blue;*/
+  box-shadow: solid;
+  margin-left: 330px;
+  width:  800px;
 }
 
 tr {
