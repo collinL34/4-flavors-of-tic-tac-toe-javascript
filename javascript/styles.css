@@ -1,0 +1,34 @@
+/* javascript version */
+
+body {
+  text-align: center;
+}
+.square{
+    width:  400px;
+    height: 180px;
+}
+
+.v{
+    border-left:  1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.h{
+    border-top:    1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#board {
+  background-image: url('../images/marble.jpeg');
+  border: solid;
+  /*border-color: blue;*/
+  box-shadow: solid;
+  margin-left: 330px;
+  width:  800px;
+}
+
+tr {
+  text-align: center;
+  font-size: 80px;
+  border-color: yellow;
+}
