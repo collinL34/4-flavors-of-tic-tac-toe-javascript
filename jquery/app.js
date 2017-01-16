@@ -14,6 +14,8 @@ $( document ).ready( function() {
             undefined, undefined, undefined
     ];
 
+    var board = [];
+
     function calculateWinner( player_indexes ) {
         var lines = [
             [0, 1, 2],
@@ -25,9 +27,14 @@ $( document ).ready( function() {
             [0, 4, 8],
             [2, 4, 6],
         ];
-        for ( let i = 0; i < lines.length; i++ ) {
-            if ( player_indexes === lines[i] ) {
-                return true;
+        for ( var i = 0; i < lines.length; i++ ) {
+            for(var j = 0; j < player_indexes.length; j++ ) {
+                // console.log( 'board' + player_indexes[j], 'plays' + lines[i][0] );
+                if ( player_indexes[j] === lines[i][0] && 
+                     player_indexes[j + 1] === lines[i][1] && 
+                     player_indexes[j + 2] === lines[i][2]) {
+                    return true;
+                };
             };
         };
         return false;
@@ -42,24 +49,26 @@ $( document ).ready( function() {
         alert( 'Great lets play!' );
     });
 
-    var xTurn = true;
-
     $( '.square' ).on( 'click', function( event ) {
         // $(this).css('border-color', 'red');
         var square = event.target;
         var $thisIndex = $( this ).attr( 'square_index' );
 
-        if ( xTurn !== true ) {
+        if ( board[board.length - 1] !== 'X' || board[board.length - 1] === undefined ) {
             square.append( 'X' );
+            board.push('X');
             plays[$thisIndex] = 'X';
-            xTurn = false;
-            console.log( calculateWinner( getAllIndexes( plays,'X' ) ), getAllIndexes( plays,'X' ));
+
+            if ( calculateWinner( getAllIndexes(plays, 'X')) ) {
+                alert('player one wins!');
+            };
+
         } else {
             square.append( 'O' );
-            plays.push( 'O' );
-            xTurn = false;
-            oTurn = true;
-            console.log( calculateWinner( getAllIndexes( plays, 'O' ) ));
+            board.push('O');
+             if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
+                return 'player one wins!' 
+            };
         };
         $( this ).off( 'click' );
     });
