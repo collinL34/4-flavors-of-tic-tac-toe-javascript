@@ -41,11 +41,11 @@ $( document ).ready( function() {
         $( '.replay' ).show();
         alert( 'Great lets play!' );
     });
+
     var xTurn = true;
 
     $( '.square' ).on( 'click', function( event ) {
         // $(this).css('border-color', 'red');
-        console.log();
         var square = event.target;
         var $thisIndex = $( this ).attr( 'square_index' );
 
