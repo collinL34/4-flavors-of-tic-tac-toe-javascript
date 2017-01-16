@@ -66,8 +66,10 @@ $( document ).ready( function() {
         } else {
             square.append( 'O' );
             board.push('O');
+            plays[$thisIndex] = 'O';
+
              if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
-                return 'player one wins!' 
+                alert('player two wins!'); 
             };
         };
         $( this ).off( 'click' );
