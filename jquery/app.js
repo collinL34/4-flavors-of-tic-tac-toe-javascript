@@ -1,20 +1,34 @@
 $( document ).ready( function() {
+
+    $( '.replay' ).hide();
+
+    $( '.replay' ).on( 'click', function() {
+        location.reload();
+    });
+
     var board = [];
 
-    function getAllIndexes( arr, val ) {
-        var indexes = [],
-            i;
-        for ( i = 0; i < arr.length; i++ )
-            if ( arr[i] === val )
-                indexes.push(i);
-        return indexes;
-    };
-    // $(function() { $('.square').off('click') });
     var plays = [undefined, undefined, undefined,
-            undefined, undefined, undefined,
-            undefined, undefined, undefined
+                undefined, undefined, undefined,
+                undefined, undefined, undefined
     ];
 
+    // $(function() { $('.square').off('click') });
+
+    $( '.ready' ).on( 'click', function( event ) {
+        $( this ).hide();
+        $( '.replay' ).show();
+        alert( 'Great lets play!' );
+    });
+
+    function getAllIndexes( arr, val ) {
+        var indexes = [];
+        for ( i = 0; i < arr.length; i++ )
+            if ( arr[i] === val ) {
+                indexes.push(i);
+            };
+        return indexes;
+    };
 
     function calculateWinner( player_indexes ) {
         var lines = [
@@ -29,7 +43,6 @@ $( document ).ready( function() {
         ];
         for ( var i = 0; i < lines.length; i++ ) {
             for(var j = 0; j < player_indexes.length; j++ ) {
-                // console.log( 'board' + player_indexes[j], 'plays' + lines[i][0] );
                 if ( player_indexes[j] === lines[i][0] && 
                      player_indexes[j + 1] === lines[i][1] && 
                      player_indexes[j + 2] === lines[i][2]) {
@@ -41,16 +54,7 @@ $( document ).ready( function() {
     };
 
 
-    $( '.replay' ).hide();
-
-    $( '.ready' ).on( 'click', function( event ) {
-        $( this ).hide();
-        $( '.replay' ).show();
-        alert( 'Great lets play!' );
-    });
-
     $( '.square' ).on( 'click', function( event ) {
-        // $(this).css('border-color', 'red');
         var square = event.target;
         var $thisIndex = $( this ).attr( 'square_index' );
 
@@ -66,19 +70,19 @@ $( document ).ready( function() {
 
         } else {
             square.append( 'O' );
-            board.push('O');
+            board.push( 'O' );
             plays[$thisIndex] = 'O';
 
              if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
-                alert('player two wins!');
+                alert( 'player two wins!' );
                 location.reload();
             };
         };
         $( this ).off( 'click' );
-    });
-
-    $( '.replay' ).on( 'click', function() {
-        location.reload();
+        if ( board.length === 9) {
+            alert('no winner');
+            location.reload();
+        };
     });
 
 });
