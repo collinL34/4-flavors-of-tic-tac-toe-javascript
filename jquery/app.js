@@ -66,6 +66,9 @@ $( document ).ready( function() {
             if ( calculateWinner( getAllIndexes(plays, 'X')) ) {
                 alert('player one wins!');
                 location.reload();
+            } else if ( board.length === 9 ) {
+                alert('no winner');
+                location.reload();
             };
 
         } else {
@@ -76,13 +79,12 @@ $( document ).ready( function() {
              if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
                 alert( 'player two wins!' );
                 location.reload();
+            } else if ( board.length === 9 ) {
+                alert('no winner');
+                location.reload();
             };
         };
         $( this ).off( 'click' );
-        if ( board.length === 9) {
-            alert('no winner');
-            location.reload();
-        };
     });
 
 });
