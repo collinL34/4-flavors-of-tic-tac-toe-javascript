@@ -1,4 +1,4 @@
-# 5-flavors-of-tic-tac-toe-javascript
+# 4-flavors-of-tic-tac-toe-javascript
 
 1. jquery
 2. vanilla javascript
