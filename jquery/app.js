@@ -1,4 +1,5 @@
 $( document ).ready( function() {
+    var board = [];
 
     function getAllIndexes( arr, val ) {
         var indexes = [],
@@ -14,7 +15,6 @@ $( document ).ready( function() {
             undefined, undefined, undefined
     ];
 
-    var board = [];
 
     function calculateWinner( player_indexes ) {
         var lines = [
@@ -61,6 +61,7 @@ $( document ).ready( function() {
 
             if ( calculateWinner( getAllIndexes(plays, 'X')) ) {
                 alert('player one wins!');
+                location.reload();
             };
 
         } else {
@@ -69,7 +70,8 @@ $( document ).ready( function() {
             plays[$thisIndex] = 'O';
 
              if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
-                alert('player two wins!'); 
+                alert('player two wins!');
+                location.reload();
             };
         };
         $( this ).off( 'click' );
