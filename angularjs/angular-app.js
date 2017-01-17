@@ -6,6 +6,5 @@ app.controller('MainCtrl', ['$scope', function($scope) {
                     undefined, undefined, undefined
     ],
     $scope.click = function() {
-      
     };
 }])
