@@ -6,6 +6,8 @@ $( document ).ready( function() {
         location.reload();
     });
 
+    $( '.replay' ).show();
+
     var board = [];
 
     var plays = [undefined, undefined, undefined,
@@ -14,13 +16,6 @@ $( document ).ready( function() {
     ];
 
     // $(function() { $('.square').off('click') });
-
-    $( '.ready' ).on( 'click', function( event ) {
-        $( this ).hide();
-        $( '.replay' ).show();
-        alert( 'Great lets play!' );
-    });
-
     function getAllIndexes( arr, val ) {
         var indexes = [];
         for ( i = 0; i < arr.length; i++ )
