@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app='TicTacToe'>
+
+<head>
+    <title>Angular-Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="angular-styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src='angular-app.js'></script>
+</head>
+
+<body ng-controller='MainCtrl'>
+    <h2>Tic Tac Toe</h2>
+    <button class='ready btn btn-info'>ready to play?</button>
+    <button type="button" class="btn btn-danger replay"> Replay </button>
+    <div id="board">
+        <table>
+            <tr id="row1">
+                <td class="square" square_index='0'></td>
+                <td class="square v" square_index='1'></td>
+                <td class="square" square_index='2'></td>
+            </tr>
+            <tr id="row2">
+                <td class="square h" square_index='3'></td>
+                <td class="square v h" square_index='4'></td>
+                <td class="square h" square_index='5'></td>
+            </tr>
+            <tr id="row3">
+                <td class="square" square_index='6'></td>
+                <td class="square v" square_index='7'></td>
+                <td class="square" square_index='8'></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
