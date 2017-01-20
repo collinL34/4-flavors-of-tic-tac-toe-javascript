@@ -16,14 +16,7 @@ $(document).ready(function() {
     ];
 
     // $(function() { $('.square').off('click') });
-    // function getAllIndexes(arr, val) {
-    //     var indexes = [];
-    //     for (i = 0; i < arr.length; i++)
-    //         if (arr[i] === val) {
-    //             indexes.push(i);
-    //         };
-    //     return indexes;
-    // };
+
 
     function calculateWinner(player_indexes, playerPiece) {
         var lines = [
