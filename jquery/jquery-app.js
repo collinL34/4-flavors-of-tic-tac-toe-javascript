@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     // $(function() { $('.square').off('click') });
 
-    function calculateWinner(player_indexes, playerPiece) {
+    function calculateWinner(playerBoardIndexes, playerPiece) {
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -30,15 +30,13 @@ $(document).ready(function() {
         ];
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
-            if (player_indexes[a] === playerPiece 
-                && player_indexes[b] === playerPiece 
-                && player_indexes[c] === playerPiece) {
+            if (playerBoardIndexes[a] === playerPiece &&
+                playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece) {
                 return true;
             };
         };
         return false;
     };
-
 
     $('.square').on('click', function(event) {
         let square = event.target;
