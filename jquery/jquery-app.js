@@ -8,9 +8,9 @@ $(document).ready(function() {
 
     $('.replay').show();
 
-    var board = [];
+    let board = [];
 
-    var plays = [undefined, undefined, undefined,
+    let plays = [undefined, undefined, undefined,
         undefined, undefined, undefined,
         undefined, undefined, undefined
     ];
@@ -18,7 +18,7 @@ $(document).ready(function() {
     // $(function() { $('.square').off('click') });
 
     function calculateWinner(player_indexes, playerPiece) {
-        var lines = [
+        const lines = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -28,14 +28,12 @@ $(document).ready(function() {
             [0, 4, 8],
             [2, 4, 6],
         ];
-        for (var i = 0; i < lines.length; i++) {
-            for (var j = 0; j < lines[i].length; j++) {
-                let index = lines[i][j];
-                console.log(index);
-                if (player_indexes[lines[i][j]] === playerPiece &&
-                    player_indexes[lines[i][j + 1]] === playerPiece && player_indexes[lines[i][j + 2]] === playerPiece) {
-                    return true;
-                };
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (player_indexes[a] === playerPiece 
+                && player_indexes[b] === playerPiece 
+                && player_indexes[c] === playerPiece) {
+                return true;
             };
         };
         return false;
@@ -43,8 +41,8 @@ $(document).ready(function() {
 
 
     $('.square').on('click', function(event) {
-        var square = event.target;
-        var $thisIndex = $(this).attr('square_index');
+        let square = event.target;
+        let $thisIndex = $(this).attr('square_index');
 
         if (board[board.length - 1] !== 'X' || board[board.length - 1] === undefined) {
             square.append('X');

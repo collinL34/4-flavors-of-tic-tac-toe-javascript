@@ -46,6 +46,7 @@ class Board extends React.Component {
     return (
       <div>
         <div className="status">{status}</div>
+        <a href='/'>Retry</a>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
