@@ -1,31 +1,31 @@
-$( document ).ready( function() {
+$(document).ready(function() {
 
-    $( '.replay' ).hide();
+    $('.replay').hide();
 
-    $( '.replay' ).on( 'click', function() {
+    $('.replay').on('click', function() {
         location.reload();
     });
 
-    $( '.replay' ).show();
+    $('.replay').show();
 
     var board = [];
 
     var plays = [undefined, undefined, undefined,
-                undefined, undefined, undefined,
-                undefined, undefined, undefined
+        undefined, undefined, undefined,
+        undefined, undefined, undefined
     ];
 
     // $(function() { $('.square').off('click') });
-    function getAllIndexes( arr, val ) {
-        var indexes = [];
-        for ( i = 0; i < arr.length; i++ )
-            if ( arr[i] === val ) {
-                indexes.push(i);
-            };
-        return indexes;
-    };
+    // function getAllIndexes(arr, val) {
+    //     var indexes = [];
+    //     for (i = 0; i < arr.length; i++)
+    //         if (arr[i] === val) {
+    //             indexes.push(i);
+    //         };
+    //     return indexes;
+    // };
 
-    function calculateWinner( player_indexes ) {
+    function calculateWinner(player_indexes, playerPiece) {
         var lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -36,11 +36,12 @@ $( document ).ready( function() {
             [0, 4, 8],
             [2, 4, 6],
         ];
-        for ( var i = 0; i < lines.length; i++ ) {
-            for(var j = 0; j < player_indexes.length; j++ ) {
-                if ( player_indexes[j] === lines[i][0] && 
-                     player_indexes[j + 1] === lines[i][1] && 
-                     player_indexes[j + 2] === lines[i][2]) {
+        for (var i = 0; i < lines.length; i++) {
+            for (var j = 0; j < lines[i].length; j++) {
+                let index = lines[i][j];
+                console.log(index);
+                if (player_indexes[lines[i][j]] === playerPiece &&
+                    player_indexes[lines[i][j + 1]] === playerPiece && player_indexes[lines[i][j + 2]] === playerPiece) {
                     return true;
                 };
             };
@@ -49,37 +50,37 @@ $( document ).ready( function() {
     };
 
 
-    $( '.square' ).on( 'click', function( event ) {
+    $('.square').on('click', function(event) {
         var square = event.target;
-        var $thisIndex = $( this ).attr( 'square_index' );
+        var $thisIndex = $(this).attr('square_index');
 
-        if ( board[board.length - 1] !== 'X' || board[board.length - 1] === undefined ) {
-            square.append( 'X' );
+        if (board[board.length - 1] !== 'X' || board[board.length - 1] === undefined) {
+            square.append('X');
             board.push('X');
             plays[$thisIndex] = 'X';
 
-            if ( calculateWinner( getAllIndexes(plays, 'X')) ) {
+            if (calculateWinner(plays, 'X')) {
                 alert('player one wins!');
                 location.reload();
-            } else if ( board.length === 9 ) {
+            } else if (board.length === 9) {
                 alert('no winner');
                 location.reload();
             };
 
         } else {
-            square.append( 'O' );
-            board.push( 'O' );
+            square.append('O');
+            board.push('O');
             plays[$thisIndex] = 'O';
 
-             if ( calculateWinner( getAllIndexes(plays, 'O')) ) {
-                alert( 'player two wins!' );
+            if (calculateWinner(plays, 'O')) {
+                alert('player two wins!');
                 location.reload();
-            } else if ( board.length === 9 ) {
+            } else if (board.length === 9) {
                 alert('no winner');
                 location.reload();
             };
         };
-        $( this ).off( 'click' );
+        $(this).off('click');
     });
 
 });
