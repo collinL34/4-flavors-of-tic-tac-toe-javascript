@@ -8,18 +8,21 @@ $(document).ready(function() {
 
     $('.replay').show();
 
-    var board = [];
+    let board = [];
 
-    var plays = [undefined, undefined, undefined,
+    let plays = [undefined, undefined, undefined,
         undefined, undefined, undefined,
         undefined, undefined, undefined
     ];
 
     // $(function() { $('.square').off('click') });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a31ae2d3bc2fff416f91095c05d8f167710856b
 
-    function calculateWinner(player_indexes, playerPiece) {
-        var lines = [
+    function calculateWinner(playerBoardIndexes, playerPiece) {
+        const lines = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -29,23 +32,19 @@ $(document).ready(function() {
             [0, 4, 8],
             [2, 4, 6],
         ];
-        for (var i = 0; i < lines.length; i++) {
-            for (var j = 0; j < lines[i].length; j++) {
-                let index = lines[i][j];
-                console.log(index);
-                if (player_indexes[lines[i][j]] === playerPiece &&
-                    player_indexes[lines[i][j + 1]] === playerPiece && player_indexes[lines[i][j + 2]] === playerPiece) {
-                    return true;
-                };
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (playerBoardIndexes[a] === playerPiece &&
+                playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece) {
+                return true;
             };
         };
         return false;
     };
 
-
     $('.square').on('click', function(event) {
-        var square = event.target;
-        var $thisIndex = $(this).attr('square_index');
+        let square = event.target;
+        let $thisIndex = $(this).attr('square_index');
 
         if (board[board.length - 1] !== 'X' || board[board.length - 1] === undefined) {
             square.append('X');

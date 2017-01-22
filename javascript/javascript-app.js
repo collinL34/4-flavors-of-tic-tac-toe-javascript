@@ -1,33 +1,36 @@
-document.getElementById('.replay');
+const squares = document.querySelector('button');
 
-// $(document).ready(function() {
+function clickers() {
+    this.style.color = 'red';
+};
 
-//     // $(function() { $('.square').off('click') });
+squares.addEventListener("click", clickers);
 
-//     $('.replay').hide();
-//     var plays = [];
+let board = [];
 
-//     $('.ready').on('click', function(event) {
-//         $(this).hide();
-//         $('.replay').show();
-//         alert('Great lets play!');
-//     });
+let plays = [undefined, undefined, undefined,
+    undefined, undefined, undefined,
+    undefined, undefined, undefined
+];
 
-//     $('.square').on('click', function(event) {
-//         // $(this).css('border-color', 'red');
-//         var square = event.target;
-//         if (plays[plays.length - 1] !== 'X' || plays[plays.length - 1] === undefined) {
-//             square.append('X');
-//             plays.push('X');
-//         } else {
-//             square.append('O');
-//             plays.push('O');
-//         };
-//         $(this).off('click');
-//     });
-
-//     $('.replay').on('click', function() {
-//         location.reload();
-//     });
-
-// });
+function calculateWinner(playerBoardIndexes, playerPiece) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (playerBoardIndexes[a] === playerPiece && 
+            playerBoardIndexes[b] === playerPiece 
+            && playerBoardIndexes[c] === playerPiece) {
+            return true;
+        };
+    };
+    return false;
+};
