@@ -1,6 +1,10 @@
-const app = angular.module('TicTacToe', []);
+const app = angular.module('TicTacToe', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function($scope, $route) {
+
+    $scope.reloadRoute = function() {
+        $route.reload();
+    };
 
     let playerX = true;
 
@@ -9,7 +13,7 @@ app.controller('MainCtrl', function($scope) {
         undefined, undefined, undefined
     ];
 
-    function calculateWinner(playerBoardIndexes, playerPiece) {
+    $scope.calculateWinner = function(playerPiece) {
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -22,26 +26,36 @@ app.controller('MainCtrl', function($scope) {
         ];
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
-            if (playerBoardIndexes[a] === playerPiece &&
-                playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece) {
+            if ($scope.board[a] === playerPiece &&
+                $scope.board[b] === playerPiece && $scope.board[c] === playerPiece) {
                 return true;
             };
         };
         return false;
     };
 
-    function winner() {
-        if (calculateWinner($scope.board, 'X')) { alert('player one') }
-    };
-
     $scope.placePiece = function(clickedIndex) {
         if (playerX) {
             $scope.board[clickedIndex] = 'X';
             playerX = false;
+
+            if ($scope.calculateWinner('X')) {
+                alert('player one wins!');
+            } else if ($scope.board.length === 9 && !$scope.board.includes(undefined)) {
+                alert('no winner, try agian');
+                $route.reload();
+            }
         } else {
             $scope.board[clickedIndex] = 'O';
             playerX = true;
+
+            if ($scope.calculateWinner('O')) {
+                alert('player two wins!');
+            } else if ($scope.board.length === 9 && !$scope.board.includes(undefined)) {
+                alert('no winner, try agian');
+                $route.reload();
+
+            }
         };
     };
-
 });
