@@ -1,7 +1,7 @@
-const squares = document.getElementsByClassName('button');
+const squares = document.querySelector('button');
 
 function clickers() {
-    squares.style.background = 'red'
+    this.style.color = 'red';
 };
 
 squares.addEventListener("click", clickers);
