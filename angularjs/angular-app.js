@@ -30,27 +30,17 @@ app.controller('MainCtrl', function($scope) {
         return false;
     };
 
-    $scope.placePiece = function(clickedIndex) {
+    function winner() {
+        if (calculateWinner($scope.board, 'X')) { alert('player one') }
+    };
 
+    $scope.placePiece = function(clickedIndex) {
         if (playerX) {
             $scope.board[clickedIndex] = 'X';
             playerX = false;
-
-            if (calculateWinner($scope.board, 'X')) {
-                alert('player one wins!');
-            } else if (board.length === 9) {
-                alert('no winner');
-            };
-
         } else {
             $scope.board[clickedIndex] = 'O';
             playerX = true;
-
-            if (calculateWinner($scope.board, 'O')) {
-                alert('player two wins!');
-            } else if (board.length === 9) {
-                alert('no winner');
-            };
         };
     };
 
