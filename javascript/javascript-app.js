@@ -16,20 +16,30 @@ function calculateWinner(playerBoardIndexes, playerPiece) {
         [0, 4, 8],
         [2, 4, 6],
     ];
-    for (let i = 0; i < lines.length; i++) {
+    for ( let i = 0; i < lines.length; i++ ) {
         const [a, b, c] = lines[i];
-        if (playerBoardIndexes[a] === playerPiece &&
-            playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece) {
+        if ( playerBoardIndexes[a] === playerPiece &&
+            playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece ) {
             return true;
         };
     };
     return false;
 };
 
-function clickers() {
-    this.innerHTML = 'X';
+let nextplayerX = true;
+
+function eventHandler() {
+    if ( nextplayerX ) {
+        board[this.id] = 'X';
+        this.innerHTML = 'X';
+        nextplayerX = false;
+    } else {
+        board[this.id] = 'O';
+        this.innerHTML = 'O';
+        nextplayerX = true;
+    };
 };
 
-const squares = document.querySelectorAll('.square');
+const squares = document.querySelectorAll( '.square' );
 
-squares.forEach(square => square.addEventListener('click', clickers));
+squares.forEach( square => square.addEventListener( 'click', eventHandler ));
