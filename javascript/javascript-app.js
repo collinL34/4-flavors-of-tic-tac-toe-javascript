@@ -1,11 +1,11 @@
-let board = [];
+let plays = [];
 
-let plays = [undefined, undefined, undefined,
+let board = [undefined, undefined, undefined,
     undefined, undefined, undefined,
     undefined, undefined, undefined
 ];
 
-function calculateWinner(playerBoardIndexes, playerPiece) {
+function calculateWinner(playerPiece) {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -16,10 +16,10 @@ function calculateWinner(playerBoardIndexes, playerPiece) {
         [0, 4, 8],
         [2, 4, 6],
     ];
-    for ( let i = 0; i < lines.length; i++ ) {
+    for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
-        if ( playerBoardIndexes[a] === playerPiece &&
-            playerBoardIndexes[b] === playerPiece && playerBoardIndexes[c] === playerPiece ) {
+        if (board[a] === playerPiece &&
+            board[b] === playerPiece && board[c] === playerPiece) {
             return true;
         };
     };
@@ -29,17 +29,34 @@ function calculateWinner(playerBoardIndexes, playerPiece) {
 let nextplayerX = true;
 
 function eventHandler() {
-    if ( nextplayerX ) {
+    if (nextplayerX) {
+        plays.push('X');
         board[this.id] = 'X';
         this.innerHTML = 'X';
         nextplayerX = false;
+
+        if (calculateWinner('X')) {
+            alert('player one wins!');
+            location.reload();
+        } else if (plays.length === 9) {
+            alert('no winner');
+            location.reload();
+        };
     } else {
+        plays.push('O');
         board[this.id] = 'O';
         this.innerHTML = 'O';
         nextplayerX = true;
+
+        if (calculateWinner('O')) {
+            alert('player one wins!');
+            location.reload();
+        } else if (plays.length === 9) {
+            alert('no winner');
+            location.reload();
+        };
     };
 };
 
-const squares = document.querySelectorAll( '.square' );
-
-squares.forEach( square => square.addEventListener( 'click', eventHandler ));
+const squares = document.querySelectorAll('.square');
+squares.forEach(square => square.addEventListener('click', eventHandler));
