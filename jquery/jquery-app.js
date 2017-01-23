@@ -15,12 +15,6 @@ $(document).ready(function() {
         undefined, undefined, undefined
     ];
 
-    // $(function() { $('.square').off('click') });
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a31ae2d3bc2fff416f91095c05d8f167710856b
-
     function calculateWinner(playerBoardIndexes, playerPiece) {
         const lines = [
             [0, 1, 2],
