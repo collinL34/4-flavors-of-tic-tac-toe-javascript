@@ -1,10 +1,6 @@
 const app = angular.module('TicTacToe', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope, $route) {
-
-    $scope.reloadRoute = function() {
-        $route.reload();
-    };
+app.controller('MainCtrl', function($scope) {
 
     let playerX = true;
 
@@ -43,7 +39,6 @@ app.controller('MainCtrl', function($scope, $route) {
                 alert('player one wins!');
             } else if ($scope.board.length === 9 && !$scope.board.includes(undefined)) {
                 alert('no winner, try agian');
-                $route.reload();
             }
         } else {
             $scope.board[clickedIndex] = 'O';
@@ -53,8 +48,6 @@ app.controller('MainCtrl', function($scope, $route) {
                 alert('player two wins!');
             } else if ($scope.board.length === 9 && !$scope.board.includes(undefined)) {
                 alert('no winner, try agian');
-                $route.reload();
-
             }
         };
     };
