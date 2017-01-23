@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="e8">
 
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tic Tac Toe Javascript</title>
+    <link rel="stylesheet" type="text/css" href="javascript-styles.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
@@ -15,23 +17,23 @@
     <div id="board">
         <table>
             <tr id="row1">
-                <td class="square"></td>
-                <td class="square v"></td>
-                <td class="square"></td>
+                <td id='0' class="square"></td>
+                <td id='1' class="square v"></td>
+                <td id='2' class="square"></td>
             </tr>
             <tr id="row2">
-                <td class="square h" square-piece=''></td>
-                <td class="square v h"></td>
-                <td class="square h"></td>
+                <td id='3' class="square h" data-piece='2'></td>
+                <td id='4' class="square v h"></td>
+                <td id='5' class="square h"></td>
             </tr>
             <tr id="row3">
-                <td class="square"></td>
-                <td class="square v"></td>
-                <td class="square"></td>
+                <td id='6' class="square"></td>
+                <td id='7' class="square v"></td>
+                <td id='8' class="square"></td>
             </tr>
         </table>
     </div>
-    <script type="text/javascript" src='app.js'></script>
+    <script type="text/javascript" src='javascript-app.js'></script>
 </body>
 
 </html>

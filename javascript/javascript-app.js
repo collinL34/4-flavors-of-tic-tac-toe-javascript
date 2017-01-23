@@ -1,33 +1,62 @@
-document.getElementById('.replay');
+let plays = [];
 
-// $(document).ready(function() {
+let board = [undefined, undefined, undefined,
+    undefined, undefined, undefined,
+    undefined, undefined, undefined
+];
 
-//     // $(function() { $('.square').off('click') });
+function calculateWinner(playerPiece) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (board[a] === playerPiece &&
+            board[b] === playerPiece && board[c] === playerPiece) {
+            return true;
+        };
+    };
+    return false;
+};
 
-//     $('.replay').hide();
-//     var plays = [];
+let nextplayerX = true;
 
-//     $('.ready').on('click', function(event) {
-//         $(this).hide();
-//         $('.replay').show();
-//         alert('Great lets play!');
-//     });
+function eventHandler() {
+    if (nextplayerX) {
+        plays.push('X');
+        board[this.id] = 'X';
+        this.innerHTML = 'X';
+        nextplayerX = false;
 
-//     $('.square').on('click', function(event) {
-//         // $(this).css('border-color', 'red');
-//         var square = event.target;
-//         if (plays[plays.length - 1] !== 'X' || plays[plays.length - 1] === undefined) {
-//             square.append('X');
-//             plays.push('X');
-//         } else {
-//             square.append('O');
-//             plays.push('O');
-//         };
-//         $(this).off('click');
-//     });
+        if (calculateWinner('X')) {
+            alert('player one wins!');
+            location.reload();
+        } else if (plays.length === 9) {
+            alert('no winner');
+            location.reload();
+        };
+    } else {
+        plays.push('O');
+        board[this.id] = 'O';
+        this.innerHTML = 'O';
+        nextplayerX = true;
 
-//     $('.replay').on('click', function() {
-//         location.reload();
-//     });
+        if (calculateWinner('O')) {
+            alert('player one wins!');
+            location.reload();
+        } else if (plays.length === 9) {
+            alert('no winner');
+            location.reload();
+        };
+    };
+};
 
-// });
+const squares = document.querySelectorAll('.square');
+squares.forEach(square => square.addEventListener('click', eventHandler));

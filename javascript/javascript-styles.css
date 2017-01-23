@@ -9,19 +9,19 @@ body {
 }
 
 .v{
-    border-left:  1px solid #000;
-    border-right: 1px solid #000;
+    border-left:  1px solid red;
+    border-right: 1px solid red;
 }
 
 .h{
-    border-top:    1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top:    1px solid red;
+    border-bottom: 1px solid red;
 }
 
 #board {
-  background-image: url('../images/marble.jpeg');
+  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/35/93/28/359328db2a024848d488c660dd53321a.jpg');
   border: solid;
-  /*border-color: blue;*/
+  border-color: red;
   box-shadow: solid;
   margin-left: 330px;
   width:  800px;
@@ -30,5 +30,6 @@ body {
 tr {
   text-align: center;
   font-size: 80px;
+  color: red;
   border-color: yellow;
 }
