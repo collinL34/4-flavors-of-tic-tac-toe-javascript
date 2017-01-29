@@ -1,12 +1,11 @@
 $(document).ready(function() {
 
-    $('.replay').hide();
+    const playerOne = undefined;
+    const playerTwo = undefined;
 
     $('.replay').on('click', function() {
         location.reload();
     });
-
-    $('.replay').show();
 
     let board = [];
 
@@ -46,7 +45,7 @@ $(document).ready(function() {
             plays[$thisIndex] = 'X';
 
             if (calculateWinner(plays, 'X')) {
-                alert('player one wins!');
+                alert(playerOne + ' wins!');
                 location.reload();
             } else if (board.length === 9) {
                 alert('no winner');
@@ -59,7 +58,7 @@ $(document).ready(function() {
             plays[$thisIndex] = 'O';
 
             if (calculateWinner(plays, 'O')) {
-                alert('player two wins!');
+                alert( playerTwo + ' wins!');
                 location.reload();
             } else if (board.length === 9) {
                 alert('no winner');
