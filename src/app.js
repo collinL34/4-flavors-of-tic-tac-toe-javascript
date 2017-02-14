@@ -1,4 +1,4 @@
-const app = angular.module('TicTacToe', ['ngRoute']);
+const app = angular.module('angular', ['ngRoute']);
 
 app.controller('MainCtrl', function($scope, $route) {
 
