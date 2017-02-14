@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='TicTacToe'>
+
+<head>
+    <title>Angular-Tic-Tac-Toe</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="angular-styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+
+    <script type="text/javascript" src='../../src/app.js'></script>
+</head>
+
+<body ng-controller='MainCtrl'>
+    <h2>Tic Tac Toe</h2>
+    <button ng-click='reloadRoute' type="button" class="btn btn-danger replay">Replay</button>
+    <div id="board">
+        <table>
+            <tr id="row1">
+                <td class="square" ng-click='placePiece(0)'>{{ board[0] }}</td>
+                <td class="square v" ng-click='placePiece(1)'>{{ board[1] }}</td>
+                <td class="square" ng-click='placePiece(2)'>{{ board[2] }}</td>
+            </tr>
+            <tr id="row2">
+                <td class="square h" ng-click='placePiece(3)'>{{ board[3] }}</td>
+                <td class="square v h" ng-click='placePiece(4)'>{{ board[4] }}</td>
+                <td class="square h" ng-click='placePiece(5)'>{{ board[5] }}</td>
+            </tr>
+            <tr id="row3">
+                <td class="square" ng-click='placePiece(6)'>{{ board[6] }}</td>
+                <td class="square v" ng-click='placePiece(7)'>{{ board[7] }}</td>
+                <td class="square" ng-click='placePiece(8)'>{{ board[8] }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
